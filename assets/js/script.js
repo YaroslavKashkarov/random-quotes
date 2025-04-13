@@ -39,13 +39,13 @@ const generateBtn = document.getElementById('generate-btn')
 
 function generateRandomQuote() {
   const randomIndex = Math.floor(Math.random() * quotes.length)
-  const {quote, author: quoteAuthor} = quotes[randomIndex]
-  // const quote = randomQuote.quote
-  // const quoteAutor = randomQuote.author
+  const randomQuote = quotes[randomIndex]
+  const {quote, author} = randomQuote
+
   // @ts-ignore
   quoteElement.textContent = quote
   // @ts-ignore
-  quoteAuthorElement.textContent = quoteAuthor
+  quoteAuthorElement.textContent = author
 }
 
 // @ts-ignore

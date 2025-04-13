@@ -22,4 +22,17 @@ body {
 
 .btn:hover {
   background-color: #0056b3;
+  transition: background-color 0.3s ease;
+  transition: 0.5s;
+}
+
+.quote {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: wheat;
+}
+
+.quote::before,
+.quote::after {
+  content: '"';
 }
