@@ -17,6 +17,9 @@ function generateRandomQuote() {
   quoteAuthorElement.textContent = author
   // @ts-ignore
   toggleFavoriteBtn.textContent = randomQuote.isFavorite ? 'Remove from favorites' : 'Add to favorites'
+
+  // @ts-ignore
+  toggleFavoriteBtn.style.display = 'inline-block'
 }
 
 function toggleFavorite() {
@@ -52,4 +55,4 @@ generateBtn.addEventListener('click', generateRandomQuote)
 // @ts-ignore
 toggleFavoriteBtn.addEventListener('click', toggleFavorite)
 
-generateRandomQuote()
+// generateRandomQuote()
