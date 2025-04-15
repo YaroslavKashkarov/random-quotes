@@ -4,6 +4,7 @@ const quoteElement = document.getElementById('quote')
 const quoteAuthorElement = document.getElementById('quote-author')
 const generateBtn = document.getElementById('generate-btn')
 const toggleFavoriteBtn = document.getElementById('toggle-favorite-btn')
+const favoritesContainer = document.getElementById('favorites-container')
 
 let currentQuoteIndex
 function generateRandomQuote() {
@@ -14,21 +15,41 @@ function generateRandomQuote() {
   quoteElement.textContent = quote
   // @ts-ignore
   quoteAuthorElement.textContent = author
+  // @ts-ignore
+  toggleFavoriteBtn.textContent = randomQuote.isFavorite ? 'Remove from favorites' : 'Add to favorites'
 }
 
 function toggleFavorite() {
   const currentQuote = quotes[currentQuoteIndex]
-  currentQuote.isFavorite = !quotes[currentQuoteIndex].isFavorite
+  currentQuote.isFavorite = !currentQuote.isFavorite
   // @ts-ignore
-  if(toggleFavoriteBtn.textContent === 'Add to favorites') {
+  toggleFavoriteBtn.textContent = currentQuote.isFavorite ? 'Remove from favorites' : 'Add to favorites'
+
+  if(currentQuote.isFavorite) {
+    const favoriteCard = document.createElement('div')
+    favoriteCard.classList.add('favorite-card')
+    favoriteCard.innerHTML =
+      `
+    <p>${currentQuote.quote}</p>
+    <p class='author'>${currentQuote.author}</p>
+    `
     // @ts-ignore
-    toggleFavoriteBtn.textContent = 'Remove from favorites'
+    favoritesContainer.appendChild(favoriteCard)
   } else {
-    // @ts-ignore
-    toggleFavoriteBtn.textContent = 'Add to favorites'
+    // Remove the favorite card from the favorites container
+    const favoriteCards = document.querySelectorAll('.favorite-card')
+    console.log(favoriteCards)
+    favoriteCards.forEach((card) => {
+      if(card.textContent?.includes(currentQuote.quote)) {
+        card.remove()
+      }
+    })
   }
 }
 
 // @ts-ignore
 generateBtn.addEventListener('click', generateRandomQuote)
-toggleFavoriteBtn?.addEventListener('click', toggleFavorite)
+// @ts-ignore
+toggleFavoriteBtn.addEventListener('click', toggleFavorite)
+
+generateRandomQuote()

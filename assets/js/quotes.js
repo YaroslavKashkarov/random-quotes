@@ -48,6 +48,21 @@ const quotes = [
     quote: 'Do something today that your future self will thank you for.',
     author: 'Unknown',
     isFavorite: false
+  },
+  {
+    quote: 'You miss 100% of the shots you don\'t take.',
+    author: 'Wayne Gretzky',
+    isFavorite: false
+  },
+  {
+    quote: 'The biggest risk is not taking any risk...',
+    author: 'Mark Zuckerberg',
+    isFavorite: false
+  },
+  {
+    quote: 'You can\'t connect the dots looking forward; you can only connect them looking backward.',
+    author: 'Steve Jobs',
+    isFavorite: false
   }
 ]
 
